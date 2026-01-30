@@ -10,12 +10,14 @@ file_name = "repository/resources/security/wso2carbon.jks"
 password = "wso2carbon"
 alias = "wso2carbon"
 key_password = "wso2carbon"
+dbpassword ="$secret{dbpass1}"
 
 [truststore]
 file_name = "repository/resources/security/client-truststore.jks"
 password = "wso2carbon"
 alias = "symmetric.key.value"
 algorithm = "AES"
+dbpassword ="$secret{dbpass1}"
 
 ## Following are set of example configs. Please refer docs for complete set of configurations.
 
@@ -80,12 +82,12 @@ algorithm = "AES"
 # [system.parameter]
 # 'key' = "value"
 
-# [[datasource]]
-# id = "WSO2CarbonDB"  # "WSO2_COORDINATION_DB"
-# url = "jdbc:mysql://localhost:3306/integratordb"
-# username = "root"
-# password = "root"
-# driver = "com.mysql.jdbc.Driver"
+[[datasource]]
+id = "VouchersDB"  # "WSO2_COORDINATION_DB"
+url = "jdbc:postgresql://mule-db-test1.db.eu.addisonleeglobal.org:5432/vouchers"
+username = "mule_vouchers"
+password = "$secret{vouchers_password}"
+driver = "org.postgresql.Driver"
 
 # [management_api]
 # protocols = "http"
@@ -102,8 +104,10 @@ algorithm = "AES"
 # [mediation]
 # synapse.global_timeout_interval = "120000"  # interval in milliseconds
 
-# [secrets]
-# secret_key = "[secret value]"
+[secrets]
+vouchers_password = "AuwtsGN5FQWOVbb5h5D+O8vfrmAY6mzwUIr/osWLUXGzL6p132D7+kLm6Yc1H9t+pBHbaVFEHawHRlaMdpq9/MkLWW9Db2tTNxSEKEoySmfwcq1C7HGdVNPENq5pJfZdY+8/dQn1WItikHthWctYmcI2igAEFH4ILgPOMgvgb/yHv5XS60aV3liq4P7Tv1FA5NaWq5SZxzP3j2kJR+KCBwg2gjPHP5oWSTjiWdzJ/uQrZKUXidf/SgoDDgao8e1VF7VCm97RcEkVOIwf2m2OZrTBfJ+/DuA+kgd7+OiKE95yXu/t1fa+f9QFooEbPu8zYHnYzKMFlaRP4U1sGXQiPg=="
+dbpass1 = "Hkc342KITR7ErcBngz9s63TyupmvCm0Ff6sxoFO22ZMgCYHFeCtcZMc0WGc6YOORxbKLT8FRnKKtJw117EzKM7egnMgCbNirWRbefpML+kpYw/RzZ0ghngywNti0K5Rm3L096ym+Oed6/etbrCOY7huWJh+z2Cdvl5TW0r9voCJb5tc76iv756/o9s1Krs52ru/lscNIQkNHbMUnqxRH7GY3v5hZ0JJ1/65IH89yEIyjHWDWbzJqvj6bT99afLCU5a2CMQxdoHMLQg2Tv9tSZ4i8ouBD8zP1KBhNKMxSrCWiGp+xD+OTiSGBWgnXhNEtlSQSmrR/pkzXGeqe+6Gx3A=="
+jobuuid = "cE+tVXNmlUCEna1ZsoDfcs6wNLjgoh6DwhrZ0X8tT1Lh59eDAKCDU1qEVp//JWzyiPbCdTXTku4c0r2ar0I7hcce2v1M/pwBxITp04diHPJtzdVcduEZO8X/9SjMMuGCzbLmo6/dKbC4NMRxD5IigcS6hX8uD560rpXymWpXFCsqCYuVUrqeNFwAdKdKG6H6hQyB5lCCucSOwCnQ5Id5MGWZg7F5rv3sUfFClflm3j5mYAuzli+yQbnDUkV6YAyrvZV0Itz5Drd2G0tq3XSaVn2x2C6dxNKyrXid189hzHlT/He1Nf6PRBWYDBB7S61mzzhC0rzQpjtdZtHXVTGctg=="
 
 # [[service_catalog]]
 # apim_host = "https://localhost:9443"
